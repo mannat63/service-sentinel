@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Play, Gauge, AlertTriangle, XCircle, Database, Zap } from "lucide-react";
+import { Play, Gauge, AlertTriangle, XCircle, Database, Zap, Flame } from "lucide-react";
 
 const simulations = [
   { type: "normal", label: "Normal Operation", icon: Play },
@@ -8,6 +8,7 @@ const simulations = [
   { type: "service-down", label: "Service Failure", icon: XCircle },
   { type: "database-failure", label: "Database Failure", icon: Database },
   { type: "api-error", label: "API Error", icon: Zap },
+  { type: "critical-failure", label: "Critical Failure", icon: Flame, destructive: true },
 ];
 
 export function SimulationControls({ onSimulate }: { onSimulate: (type: string) => void }) {
