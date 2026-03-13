@@ -4,9 +4,11 @@ import { ServiceCard } from "@/components/dashboard/ServiceCard";
 import { MetricsCharts } from "@/components/dashboard/MetricsCharts";
 import { SimulationControls } from "@/components/dashboard/SimulationControls";
 import { ActivityFeed } from "@/components/dashboard/ActivityFeed";
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
 
 const Index = () => {
-  const { services, logs, metrics, simulate } = useMonitoring();
+  const { services, logs, metrics, simulate, downloadLogFile } = useMonitoring();
 
   return (
     <div className="min-h-screen flex flex-col">
