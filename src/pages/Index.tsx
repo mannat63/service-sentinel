@@ -4,9 +4,11 @@ import { ServiceCard } from "@/components/dashboard/ServiceCard";
 import { MetricsCharts } from "@/components/dashboard/MetricsCharts";
 import { SimulationControls } from "@/components/dashboard/SimulationControls";
 import { ActivityFeed } from "@/components/dashboard/ActivityFeed";
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
 
 const Index = () => {
-  const { services, logs, metrics, simulate } = useMonitoring();
+  const { services, logs, metrics, simulate, downloadLogFile } = useMonitoring();
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -35,7 +37,13 @@ const Index = () => {
 
         {/* Controls & Feed */}
         <section className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-          <SimulationControls onSimulate={simulate} />
+          <div className="space-y-4">
+            <SimulationControls onSimulate={simulate} />
+            <Button variant="outline" size="sm" className="w-full gap-2 text-xs" onClick={downloadLogFile}>
+              <Download className="h-3.5 w-3.5" />
+              Download app.log
+            </Button>
+          </div>
           <div className="lg:col-span-2">
             <ActivityFeed logs={logs} />
           </div>

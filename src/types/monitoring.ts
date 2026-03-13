@@ -1,4 +1,5 @@
 export type ServiceStatus = "healthy" | "warning" | "down";
+export type SystemStatus = "ALL SYSTEMS OPERATIONAL" | "PARTIAL ISSUES" | "DEGRADED" | "CRITICAL";
 export type LogLevel = "INFO" | "WARNING" | "ERROR";
 
 export interface ServiceHealth {
