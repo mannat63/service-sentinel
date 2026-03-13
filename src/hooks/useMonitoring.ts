@@ -33,6 +33,7 @@ export function useMonitoring() {
 
   const addLog = useCallback((entry: LogEntry) => {
     setLogs((prev) => [entry, ...prev].slice(0, 200));
+    appendToLogFile(entry);
   }, []);
 
   const updateService = useCallback((name: string, updates: Partial<ServiceHealth>) => {
