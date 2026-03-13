@@ -14,34 +14,40 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <DashboardNavbar services={services} />
 
-      <main className="flex-1 p-6 space-y-6 max-w-[1400px] mx-auto w-full">
-        {/* Service Health Grid */}
+      <main className="flex-1 px-6 py-5 space-y-5 max-w-[1400px] mx-auto w-full">
+        {/* Service Health */}
         <section>
-          <h2 className="text-xs font-semibold tracking-wide text-muted-foreground uppercase mb-3">
-            Service Health
-          </h2>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-[11px] font-medium text-muted-foreground">Services</h2>
+            <span className="text-[10px] font-mono text-muted-foreground tabular-nums">
+              {services.filter(s => s.status === "healthy").length}/{services.length} healthy
+            </span>
+          </div>
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
             {services.map((s) => (
               <ServiceCard key={s.name} service={s} />
             ))}
           </div>
         </section>
 
-        {/* Metrics Charts */}
+        {/* Metrics */}
         <section>
-          <h2 className="text-xs font-semibold tracking-wide text-muted-foreground uppercase mb-3">
-            System Metrics
-          </h2>
+          <h2 className="text-[11px] font-medium text-muted-foreground mb-3">Metrics</h2>
           <MetricsCharts data={metrics} />
         </section>
 
         {/* Controls & Feed */}
-        <section className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-          <div className="space-y-4">
+        <section className="grid grid-cols-1 gap-3 lg:grid-cols-3">
+          <div className="space-y-3">
             <SimulationControls onSimulate={simulate} />
-            <Button variant="outline" size="sm" className="w-full gap-2 text-xs" onClick={downloadLogFile}>
-              <Download className="h-3.5 w-3.5" />
-              Download app.log
+            <Button
+              variant="outline"
+              size="sm"
+              className="w-full gap-2 text-[11px] h-8"
+              onClick={downloadLogFile}
+            >
+              <Download className="h-3 w-3" />
+              Export app.log
             </Button>
           </div>
           <div className="lg:col-span-2">
