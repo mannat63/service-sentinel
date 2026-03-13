@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import type { ServiceHealth, LogEntry, MetricsSnapshot, LogLevel } from "@/types/monitoring";
+import { appendToLogFile, downloadLogFile } from "@/lib/logFile";
 
 const SERVICE_NAMES = ["Authentication", "Payment", "Database", "Notification", "Search"];
 
