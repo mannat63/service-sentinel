@@ -23,9 +23,9 @@ export function SimulationControls({ onSimulate }: { onSimulate: (type: string) 
           return (
             <Button
               key={s.type}
-              variant="outline"
+              variant={(s as any).destructive ? "destructive" : "outline"}
               size="sm"
-              className="justify-start gap-2 text-xs"
+              className={`justify-start gap-2 text-xs ${(s as any).destructive ? "col-span-2" : ""}`}
               onClick={() => onSimulate(s.type)}
             >
               <Icon className="h-3.5 w-3.5" />

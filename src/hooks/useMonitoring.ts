@@ -127,10 +127,19 @@ export function useMonitoring() {
           addLog(createLog("ERROR", "Payment", "Payment API request failed"));
           addLog(createLog("ERROR", "Payment", "HTTP 503 Service Unavailable"));
           break;
+        case "critical-failure":
+          updateService("Database", { status: "down", latency: 0, errorCount: Math.round(randomBetween(10, 30)) });
+          updateService("Payment", { status: "down", latency: 0, errorCount: Math.round(randomBetween(5, 20)) });
+          updateService("Notification", { status: "down", latency: 0, errorCount: Math.round(randomBetween(8, 25)) });
+          addLog(createLog("ERROR", "Database", "Database service unreachable"));
+          addLog(createLog("ERROR", "Payment", "Payment service connection failed"));
+          addLog(createLog("ERROR", "Notification", "Notification queue overloaded"));
+          addLog(createLog("ERROR", "System", "CRITICAL: Multiple services down — immediate action required"));
+          break;
       }
     },
     [addLog, updateService]
   );
 
-  return { services, logs, metrics, simulate };
+  return { services, logs, metrics, simulate, downloadLogFile };
 }

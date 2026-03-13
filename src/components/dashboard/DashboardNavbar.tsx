@@ -7,9 +7,10 @@ interface Props {
 
 export function DashboardNavbar({ services }: Props) {
   const allHealthy = services.every((s) => s.status === "healthy");
-  const hasDown = services.some((s) => s.status === "down");
-  const statusLabel = hasDown ? "DEGRADED" : allHealthy ? "ALL SYSTEMS OPERATIONAL" : "PARTIAL ISSUES";
-  const statusColor = hasDown ? "bg-down" : allHealthy ? "bg-healthy" : "bg-warning";
+  const downCount = services.filter((s) => s.status === "down").length;
+  const hasWarning = services.some((s) => s.status === "warning");
+  const statusLabel = downCount > 2 ? "CRITICAL" : downCount > 0 ? "DEGRADED" : hasWarning ? "PARTIAL ISSUES" : "ALL SYSTEMS OPERATIONAL";
+  const statusColor = downCount > 2 ? "bg-destructive" : downCount > 0 ? "bg-down" : hasWarning ? "bg-warning" : "bg-healthy";
 
   return (
     <header className="flex items-center justify-between border-b px-6 py-3">

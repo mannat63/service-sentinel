@@ -37,7 +37,13 @@ const Index = () => {
 
         {/* Controls & Feed */}
         <section className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-          <SimulationControls onSimulate={simulate} />
+          <div className="space-y-4">
+            <SimulationControls onSimulate={simulate} />
+            <Button variant="outline" size="sm" className="w-full gap-2 text-xs" onClick={downloadLogFile}>
+              <Download className="h-3.5 w-3.5" />
+              Download app.log
+            </Button>
+          </div>
           <div className="lg:col-span-2">
             <ActivityFeed logs={logs} />
           </div>
