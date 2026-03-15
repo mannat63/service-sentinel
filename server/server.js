@@ -14,6 +14,13 @@ app.use((req, res, next) => {
 
 // Middleware to parse JSON bodies
 app.use(express.json());
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "ok",
+    service: "service-sentinel",
+    timestamp: new Date()
+  });
+});
 
 // POST /log/info
 app.post('/log/info', (req, res) => {

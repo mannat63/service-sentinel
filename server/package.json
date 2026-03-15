@@ -8,9 +8,14 @@
     "dev": "node server.js"
   },
   "dependencies": {
+    "@aws-sdk/client-cloudwatch-logs": "^3.1009.0",
     "express": "^4.18.2"
   },
-  "keywords": ["logging", "monitoring", "express"],
+  "keywords": [
+    "logging",
+    "monitoring",
+    "express"
+  ],
   "author": "",
   "license": "MIT"
 }
