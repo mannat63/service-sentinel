@@ -49,16 +49,15 @@ app.post('/log/warning', (req, res) => {
 });
 
 // POST /log/error
-app.post('/log/error', (req, res) => {
-  console.log('Received ERROR log:', req.body);
-  const { message } = req.body;
-  
-  if (!message) {
-    return res.status(400).json({ error: 'Message is required' });
-  }
-  
-  logger.error(message);
-  res.json({ status: 'logged' });
+app.post("/log/error", (req, res) => {
+  const message = req.body.message;
+
+  const logEntry = `[ERROR] ${message}\n`;
+  fs.appendFileSync("./logs/app.log", logEntry);
+
+  sendAlert(message);   // send alert to Kuma
+
+  res.json({ status: "logged" });
 });
 
 // Start server
@@ -76,13 +75,4 @@ function sendAlert(message) {
     .catch(err => console.error("Kuma alert failed"));
 }
 
-app.post("/log/error", (req, res) => {
-  const message = req.body.message;
 
-  const logEntry = `[ERROR] ${message}\n`;
-  fs.appendFileSync("./logs/app.log", logEntry);
-
-  sendAlert(message);   // send alert to Kuma
-
-  res.json({ status: "logged" });
-});
