@@ -66,3 +66,23 @@ app.listen(PORT, () => {
   console.log(`Logging server running on http://localhost:${PORT}`);
   logger.info('Server started');
 });
+
+const axios = require("axios");
+
+const KUMA_PUSH_URL = "hhttp://13.219.237.91:3001/api/push/lhTZrjlqLm?status=up&msg=OK&ping=";
+
+function sendAlert(message) {
+  axios.get(KUMA_PUSH_URL + "?status=down&msg=" + encodeURIComponent(message))
+    .catch(err => console.error("Kuma alert failed"));
+}
+
+app.post("/log/error", (req, res) => {
+  const message = req.body.message;
+
+  const logEntry = `[ERROR] ${message}\n`;
+  fs.appendFileSync("./logs/app.log", logEntry);
+
+  sendAlert(message);   // send alert to Kuma
+
+  res.json({ status: "logged" });
+});
