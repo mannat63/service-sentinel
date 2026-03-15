@@ -14,6 +14,9 @@ app.use((req, res, next) => {
 
 // Middleware to parse JSON bodies
 app.use(express.json());
+app.get("/health", (req, res) => {
+  res.json({ status: "ok" });
+});
 
 // POST /log/info
 app.post('/log/info', (req, res) => {
