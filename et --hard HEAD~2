@@ -1,0 +1,19 @@
+[33m35659ed[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Added backend logging and monitoring system
+[33m067aeae[m Added backend logging and monitoring system
+[33m790906b[m Added backend logging and monitoring system
+[33m9876b15[m Added backend logging and monitoring system
+[33m7784ff8[m Polished UI to look professional
+[33m0ade6ed[m Polished UI to look professional
+[33m7f07387[m Add log export support
+[33m4cc73ac[m Changes
+[33m874caef[m Preceding changes
+[33m6351113[m Preceding changes
+[33m68c4d1e[m Preceding changes
+[33m2b07383[m Preceding changes
+[33mdc59dd4[m Add full client-side dashboard
+[33ma513dbd[m Add client-side monitoring UI
+[33m74cb072[m Update dependency lockfile
+[33m5efd82f[m Update dependencies lockfile
+[33ma40d142[m Generate and add bun.lock
+[33m5693301[m Changes
+[33m732c726[m template: vite_react_shadcn_ts_2026-01-16
